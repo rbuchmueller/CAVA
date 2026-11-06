@@ -15,3 +15,47 @@
 .app{height:100vh;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr) 292px;gap:10px;overflow:hidden}.workspace{height:auto;min-height:0}.workspace aside{min-height:0;overflow-y:auto}.viz-card{min-height:0;overflow-y:auto}.force-section{margin-top:0;min-height:0;overflow:hidden;display:flex;flex-direction:column}.relationship-cards{min-height:0;flex:1}.relationship-card{flex-basis:500px}.relationship-network{height:200px}.relationship-label+.relationship-label{display:none}.relationship-label{display:none}.node-code{font-size:7px;font-weight:900;fill:#fff;paint-order:stroke;stroke:#0005;stroke-width:.6px}.relationship-stats{display:flex;flex-direction:column;gap:3px;line-height:1.35}.node-key{white-space:normal}.node-key b{display:inline-grid;place-items:center;min-width:13px;height:13px;border-radius:50%;background:#53625b;color:#fff;font-size:7px;margin-right:2px}.nav-toggle{display:flex!important;align-items:center;gap:6px;white-space:nowrap}.nav-toggle input{display:none}.nav-toggle span{width:25px;height:14px;background:#c5cbc7;border-radius:10px;position:relative}.nav-toggle span:after{content:"";position:absolute;background:#fff;width:10px;height:10px;border-radius:50%;left:2px;top:2px;transition:.2s}.nav-toggle input:checked+span{background:var(--teal)}.nav-toggle input:checked+span:after{left:13px}@media(max-width:900px){.app{height:auto;display:block;overflow:visible}.workspace{height:auto}.force-section{margin-top:10px}.relationship-network{height:220px}}
 .app{grid-template-rows:auto minmax(0,1fr)}.dashboard-shell{min-height:0;display:grid;grid-template-rows:minmax(0,1fr) 350px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}.dashboard-shell>.workspace{border:0;border-radius:0;border-bottom:1px solid var(--line)}.dashboard-shell>.force-section{border:0;border-radius:0;padding:12px 16px;background:#fff}.relationship-card{flex-basis:560px;min-height:285px}.relationship-network{height:245px}.node-code{font-size:9px;stroke-width:.8px}.relationship-stats{font-size:9px}.node-key b{min-width:16px;height:16px;font-size:8px}@media(max-width:900px){.dashboard-shell{display:block;overflow:visible}.dashboard-shell>.workspace{border-bottom:1px solid var(--line)}.dashboard-shell>.force-section{min-height:350px}.relationship-network{height:250px}}
 .viz-card{overflow:hidden!important}.mini-projection{width:min(100%,220px);height:auto;aspect-ratio:1/1;margin-left:auto;margin-right:auto}#sequenceProjection{display:block;width:min(100%,560px);height:auto;aspect-ratio:1/1;margin:0 auto}.row-label[data-code]{fill:#405149}.row-label[data-code]:hover{fill:#e76545}
+
+/* Resizable relationship networks */
+.dashboard-shell {
+  grid-template-rows:
+    minmax(0, 1fr)
+    var(--relationship-height, clamp(180px, 28vh, 280px));
+}
+
+.force-resize-handle {
+  flex: 0 0 10px;
+  width: 100%;
+  cursor: ns-resize;
+  touch-action: none;
+  position: relative;
+}
+
+.force-resize-handle::after {
+  content: "";
+  position: absolute;
+  width: 46px;
+  height: 4px;
+  border-radius: 4px;
+  background: #b9c3bd;
+  left: 50%;
+  top: 3px;
+  transform: translateX(-50%);
+}
+
+.force-resize-handle:hover::after {
+  background: #087d69;
+}
+
+/* Keep the network container scrollable */
+.dashboard-shell > .force-section {
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .dashboard-shell > .force-section {
+    height: var(--relationship-height, 220px);
+    min-height: 0;
+  }
+}
