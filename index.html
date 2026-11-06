@@ -24,7 +24,11 @@
         <div id="selection" class="selection">Hover or select a numeric bin to inspect it.</div>
       </section>
     </section>
-    <section class="force-section"><div class="force-head"><div><b>Relationship networks</b><small>Size: observations · gray: density · orange: selected · opacity: probability · width/×N: overlap · dashed: lower confidence</small></div><span id="forceSummary"></span></div><div id="relationshipCards" class="relationship-cards"><div class="relationship-empty">Select cells to create relationship networks.</div></div></section></section>
+    <section class="force-section"><div
+  id="forceResizeHandle"
+  class="force-resize-handle"
+  title="Drag to resize relationship networks"
+></div><div class="force-head"><div><b>Relationship networks</b><small>Size: observations · gray: density · orange: selected · opacity: probability · width/×N: overlap · dashed: lower confidence</small></div><span id="forceSummary"></span></div><div id="relationshipCards" class="relationship-cards"><div class="relationship-empty">Select cells to create relationship networks.</div></div></section></section>
   </main>
   <dialog id="binsDialog"><button id="closeBins" class="close">×</button><h2>Set bin boundaries directly</h2><p>Enter ordered numeric boundaries separated by commas. The outer values define the displayed range.</p><div id="binEditor" class="bin-editor"></div><button id="applyBins">Apply boundaries</button></dialog>
   <dialog id="sequenceDialog" class="sequence-dialog"><button id="closeSequence" class="close">×</button><h2 id="sequenceDialogTitle">Create variable sequence</h2><label class="title-field">Sequence title<input id="sequenceTitle" placeholder="e.g. Respiratory deterioration"></label><p>All variables are shown: orange points are included and gray points remain available for context.</p><svg id="sequenceProjection" viewBox="0 0 720 280" aria-label="Variable projection"></svg><div class="suggestion-row"><input id="variableSuggestion" list="variableOptions" placeholder="Search variable"><datalist id="variableOptions"></datalist><button id="addSuggested">Add variable</button></div><div id="selectedVariables" class="selected-variables"></div><button id="createSequence">Create sequence</button></dialog>
